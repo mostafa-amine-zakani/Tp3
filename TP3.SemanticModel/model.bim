@@ -1,0 +1,507 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "fr-FR",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "fr-FR",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "tables": [
+      {
+        "name": "flight_prices",
+        "lineageTag": "a13a4360-7b3b-5707-bf00-ccdb87e15f16",
+        "columns": [
+          {
+            "name": "flight_id",
+            "dataType": "int64",
+            "sourceColumn": "flight_id",
+            "lineageTag": "9f151d02-cced-53dd-aa46-cb6877dd5703",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "OP_CARRIER",
+            "dataType": "string",
+            "sourceColumn": "OP_CARRIER",
+            "lineageTag": "bf5eabf5-3fc9-56ba-ac73-4c4c54e5651a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "flight",
+            "dataType": "string",
+            "sourceColumn": "flight",
+            "lineageTag": "4541523f-d21f-5728-9305-6e3c1945a408",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_city",
+            "dataType": "string",
+            "sourceColumn": "source_city",
+            "lineageTag": "12b4e9e2-c783-516e-97eb-aa971692e458",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Arrival_date",
+            "dataType": "dateTime",
+            "sourceColumn": "Arrival_date",
+            "lineageTag": "3d2d5cfc-5c78-587a-96f5-7e559c6c1ec1",
+            "summarizeBy": "none",
+            "formatString": "Short Date"
+          },
+          {
+            "name": "departure_time",
+            "dataType": "string",
+            "sourceColumn": "departure_time",
+            "lineageTag": "a3e1d1ee-0003-5b36-8c8c-d40e52ac35de",
+            "summarizeBy": "none",
+            "sortByColumn": "Ordre_Depart"
+          },
+          {
+            "name": "stops",
+            "dataType": "int64",
+            "sourceColumn": "stops",
+            "lineageTag": "46e2d6ad-99d8-587e-98d1-f8d97b472b2c",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "arrival_time",
+            "dataType": "string",
+            "sourceColumn": "arrival_time",
+            "lineageTag": "c30895f0-6a02-5ea0-9266-142c66f80dae",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "destination_city",
+            "dataType": "string",
+            "sourceColumn": "destination_city",
+            "lineageTag": "ffd58f50-737d-5817-ad4a-033be2b0d373",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "class",
+            "dataType": "string",
+            "sourceColumn": "class",
+            "lineageTag": "ed1d714a-cd24-5ff4-abcc-1d1ff95ca620",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "duration",
+            "dataType": "double",
+            "sourceColumn": "duration",
+            "lineageTag": "7d6b762d-edc7-5a46-b850-b4e4bc37fc0d",
+            "summarizeBy": "none",
+            "formatString": "0.00"
+          },
+          {
+            "name": "price",
+            "dataType": "double",
+            "sourceColumn": "price",
+            "lineageTag": "56093375-103c-58c5-bb2c-4d46526cb962",
+            "summarizeBy": "none",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Weather_ID",
+            "dataType": "int64",
+            "sourceColumn": "Weather_ID",
+            "lineageTag": "0455fcb0-f7ac-5c0f-85e1-6036327cc107",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Prix_Categorie",
+            "dataType": "string",
+            "sourceColumn": "Prix_Categorie",
+            "lineageTag": "a94d79a2-368f-5b1d-81df-88fd85a62fb9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Duree_Minutes",
+            "dataType": "double",
+            "sourceColumn": "Duree_Minutes",
+            "lineageTag": "ca716f52-c643-5f28-b81a-3011c62eb0e9",
+            "summarizeBy": "none",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "Trajet",
+            "dataType": "string",
+            "sourceColumn": "Trajet",
+            "lineageTag": "bf061e49-b6bb-55d3-8182-6c979aa1a7c2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordre_Depart",
+            "dataType": "int64",
+            "sourceColumn": "Ordre_Depart",
+            "lineageTag": "0ecf1c73-ed14-5ffa-81f8-eb3064ffb0f4",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Seuil_Anomalie",
+            "dataType": "double",
+            "sourceColumn": "Seuil_Anomalie",
+            "lineageTag": "e56bf5e5-5427-57f6-965d-6d1f7cc11b19",
+            "summarizeBy": "none",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Est_Anomalie",
+            "dataType": "string",
+            "sourceColumn": "Est_Anomalie",
+            "lineageTag": "513db46a-2b85-5d2b-a22e-1d8f281737a4",
+            "summarizeBy": "none"
+          },
+          {
+            "type": "calculated",
+            "name": "Variation_Prix",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "DIVIDE ( flight_prices[price], CALCULATE ( AVERAGE ( flight_prices[price] ), ALL ( flight_prices ) ) ) - 1",
+            "formatString": "0.0%",
+            "lineageTag": "beb898f8-0454-5165-ae51-e53b3d4a7c03",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "flight_prices",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\flight_prices.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Types = Table.TransformColumnTypes(EnTetes, {",
+                "        {\"flight_id\", Int64.Type}, {\"OP_CARRIER\", type text}, {\"flight\", type text},",
+                "        {\"source_city\", type text}, {\"Arrival_date\", type date}, {\"departure_time\", type text},",
+                "        {\"stops\", Int64.Type}, {\"arrival_time\", type text}, {\"destination_city\", type text},",
+                "        {\"class\", type text}, {\"duration\", type number}, {\"price\", type number}, {\"Weather_ID\", Int64.Type},",
+                "        {\"Prix_Categorie\", type text}, {\"Duree_Minutes\", type number}, {\"Trajet\", type text},",
+                "        {\"Ordre_Depart\", Int64.Type}, {\"Seuil_Anomalie\", type number}, {\"Est_Anomalie\", type text}}, \"en-US\")",
+                "in",
+                "    Types"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Prix Moyen",
+            "expression": "AVERAGE ( flight_prices[price] )",
+            "lineageTag": "52aff7f7-88ea-5b3d-acdb-e09d3cd23118",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Durée Moyenne",
+            "expression": "AVERAGE ( flight_prices[duration] )",
+            "lineageTag": "90ffdf03-7527-535e-b1d1-2721173be4da",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Prix Moyen par Classe",
+            "expression": "CALCULATE ( [Prix Moyen], ALLEXCEPT ( flight_prices, flight_prices[class] ) )",
+            "lineageTag": "b636df15-f94e-51c4-8faa-e7090ac2e1d8",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Écart Prix",
+            "expression": "[Prix Moyen] - CALCULATE ( [Prix Moyen], ALL ( flight_prices ) )",
+            "lineageTag": "2c68086a-f251-5849-90d0-fefa7eec2efa",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Taux Vols Directs",
+            "expression": "DIVIDE ( COUNTROWS ( FILTER ( flight_prices, flight_prices[stops] = 0 ) ), COUNTROWS ( flight_prices ) )",
+            "lineageTag": "9bd7edfe-a729-5db6-adb0-0c3bda9a82de",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Nombre de Vols",
+            "expression": "COUNTROWS ( flight_prices )",
+            "lineageTag": "e40364ec-5054-556a-b8d8-7f553b65b348",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Escales Moyennes",
+            "expression": "AVERAGE ( flight_prices[stops] )",
+            "lineageTag": "05172862-4763-584a-a169-2ba86367cd8a",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Durée Moyenne (min)",
+            "expression": "AVERAGE ( flight_prices[Duree_Minutes] )",
+            "lineageTag": "8f35d74b-48f0-5d96-8aa8-717ef32d1372",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Nb Anomalies",
+            "expression": "CALCULATE ( COUNTROWS ( flight_prices ), flight_prices[Est_Anomalie] = \"Oui\" )",
+            "lineageTag": "a76cb64c-9239-5ded-8e81-f870f1843061",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Couleur Prix",
+            "expression": "SWITCH ( TRUE (), [Prix Moyen] < 10000, \"#2E7D32\", [Prix Moyen] < 20000, \"#F9A825\", \"#C62828\" )",
+            "lineageTag": "a00731f0-b1c8-5440-b1c3-1b07f7aaf0e4"
+          },
+          {
+            "name": "Prix Moyen Economy",
+            "expression": "CALCULATE ( [Prix Moyen], flight_prices[class] = \"Economy\" )",
+            "lineageTag": "a0c97fcf-2dd4-5359-8c77-afcca16e7d8c",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Durée Moyenne Economy",
+            "expression": "CALCULATE ( [Durée Moyenne], flight_prices[class] = \"Economy\" )",
+            "lineageTag": "360d9e1a-40eb-556c-8db6-39a57f679f62",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Taux Vols Directs Economy",
+            "expression": "CALCULATE ( [Taux Vols Directs], flight_prices[class] = \"Economy\" )",
+            "lineageTag": "099989a7-e727-519a-a84e-bff6a4ce8ca8",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Nombre de Vols Economy",
+            "expression": "CALCULATE ( [Nombre de Vols], flight_prices[class] = \"Economy\" )",
+            "lineageTag": "b27a1804-bc01-5f8e-9c13-e1ccb020cf6d",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Corrélation Heure-Prix",
+            "expression": "VAR mx = AVERAGE ( flight_prices[Ordre_Depart] )\nVAR my = AVERAGE ( flight_prices[price] )\nVAR cov = SUMX ( flight_prices, ( flight_prices[Ordre_Depart] - mx ) * ( flight_prices[price] - my ) )\nVAR sx = SQRT ( SUMX ( flight_prices, ( flight_prices[Ordre_Depart] - mx ) ^ 2 ) )\nVAR sy = SQRT ( SUMX ( flight_prices, ( flight_prices[price] - my ) ^ 2 ) )\nRETURN DIVIDE ( cov, sx * sy )",
+            "lineageTag": "874f9b79-b355-573d-9fd2-b1a2b6fbda99",
+            "formatString": "0.000"
+          },
+          {
+            "name": "Corrélation Durée-Prix",
+            "expression": "VAR mx = AVERAGE ( flight_prices[duration] )\nVAR my = AVERAGE ( flight_prices[price] )\nVAR cov = SUMX ( flight_prices, ( flight_prices[duration] - mx ) * ( flight_prices[price] - my ) )\nVAR sx = SQRT ( SUMX ( flight_prices, ( flight_prices[duration] - mx ) ^ 2 ) )\nVAR sy = SQRT ( SUMX ( flight_prices, ( flight_prices[price] - my ) ^ 2 ) )\nRETURN DIVIDE ( cov, sx * sy )",
+            "lineageTag": "1e48ebfa-4015-56de-81e8-a5bf056e4d54",
+            "formatString": "0.000"
+          }
+        ]
+      },
+      {
+        "name": "Airlines_info",
+        "lineageTag": "7aa37b4b-6e2f-5f95-88c0-e71bf185d64d",
+        "columns": [
+          {
+            "name": "IATA_CODE",
+            "dataType": "string",
+            "sourceColumn": "IATA_CODE",
+            "lineageTag": "16bee472-e20d-5d37-b66b-55b38d0b73cd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Airline",
+            "dataType": "string",
+            "sourceColumn": "Airline",
+            "lineageTag": "d5757bb8-967c-50d7-a0d6-a8a574ff851e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Headquarters_Location",
+            "dataType": "string",
+            "sourceColumn": "Headquarters_Location",
+            "lineageTag": "b879709f-f5fa-53fd-91dc-24c6d30ca2b8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "lineageTag": "84fd1dc0-c229-5ea6-8802-fdc86195dd3f",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Airlines_info",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\Airlines_info.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Types = Table.TransformColumnTypes(EnTetes, {{\"IATA_CODE\", type text}, {\"Airline\", type text}, {\"Headquarters_Location\", type text}, {\"Country\", type text}})",
+                "in",
+                "    Types"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Weather_conditions",
+        "lineageTag": "044c22fc-517c-5293-95df-c63d1bfe73d2",
+        "columns": [
+          {
+            "name": "Weather_ID",
+            "dataType": "int64",
+            "sourceColumn": "Weather_ID",
+            "lineageTag": "0455fcb0-f7ac-5c0f-85e1-6036327cc107",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Weather_condition",
+            "dataType": "string",
+            "sourceColumn": "Weather_condition",
+            "lineageTag": "82a11d9e-2300-5ebc-bafd-739bee3ed0db",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Weather_conditions",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\Weather_conditions.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Types = Table.TransformColumnTypes(EnTetes, {{\"Weather_ID\", Int64.Type}, {\"Weather_condition\", type text}})",
+                "in",
+                "    Types"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "lineageTag": "7d055689-bcb7-5ed4-a915-af00597795ab",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "lineageTag": "3aa3ff6a-98eb-5360-8535-ecbf78d64a74",
+            "summarizeBy": "none",
+            "formatString": "Short Date",
+            "isKey": true
+          },
+          {
+            "name": "Année",
+            "dataType": "int64",
+            "sourceColumn": "Année",
+            "lineageTag": "e4dd8ab7-5ab5-5073-a6ff-4fc643aa19e9",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Trimestre",
+            "dataType": "string",
+            "sourceColumn": "Trimestre",
+            "lineageTag": "56f532ff-1041-5b17-912a-c8c03ac06bae",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Mois_Num",
+            "dataType": "int64",
+            "sourceColumn": "Mois_Num",
+            "lineageTag": "56006746-5d8d-5c9e-8178-29c6eee0fb15",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Mois",
+            "dataType": "string",
+            "sourceColumn": "Mois",
+            "lineageTag": "36963f57-454f-5790-bcab-9bda4acf1e3b",
+            "summarizeBy": "none",
+            "sortByColumn": "Mois_Num"
+          },
+          {
+            "name": "Année_Mois",
+            "dataType": "string",
+            "sourceColumn": "Année_Mois",
+            "lineageTag": "9f64107c-f086-57c2-849f-d6bf4b7a77b2",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Debut = #date(2020, 1, 1),",
+                "    Fin = #date(2025, 12, 31),",
+                "    Dates = List.Dates(Debut, Duration.Days(Fin - Debut) + 1, #duration(1, 0, 0, 0)),",
+                "    Table0 = Table.FromList(Dates, Splitter.SplitByNothing(), {\"Date\"}),",
+                "    Typee = Table.TransformColumnTypes(Table0, {{\"Date\", type date}}),",
+                "    Annee = Table.AddColumn(Typee, \"Année\", each Date.Year([Date]), Int64.Type),",
+                "    Trim = Table.AddColumn(Annee, \"Trimestre\", each \"T\" & Text.From(Date.QuarterOfYear([Date])), type text),",
+                "    MoisNum = Table.AddColumn(Trim, \"Mois_Num\", each Date.Month([Date]), Int64.Type),",
+                "    Mois = Table.AddColumn(MoisNum, \"Mois\", each Date.ToText([Date], \"MMM\", \"fr-FR\"), type text),",
+                "    AnneeMois = Table.AddColumn(Mois, \"Année_Mois\", each Date.ToText([Date], \"yyyy-MM\"), type text)",
+                "in",
+                "    AnneeMois"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "b0aaafbc-2967-5299-a15c-4ef25036ab32",
+        "fromTable": "flight_prices",
+        "fromColumn": "OP_CARRIER",
+        "toTable": "Airlines_info",
+        "toColumn": "IATA_CODE"
+      },
+      {
+        "name": "bb16f9f6-5cd0-5d7d-a603-59479ee7028f",
+        "fromTable": "flight_prices",
+        "fromColumn": "Weather_ID",
+        "toTable": "Weather_conditions",
+        "toColumn": "Weather_ID"
+      },
+      {
+        "name": "db852942-277a-5ee7-a6df-bd19be8bd389",
+        "fromTable": "flight_prices",
+        "fromColumn": "Arrival_date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DossierTP3",
+        "kind": "m",
+        "lineageTag": "7da7bdd3-6618-5804-9976-3eb63d4d907b",
+        "expression": "\"C:\\Tp3\" meta [IsParameterQuery = true, Type = \"Text\", IsParameterQueryRequired = true]",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DossierTP3\", \"flight_prices\", \"Airlines_info\", \"Weather_conditions\", \"Dim_Date\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "config": "{\"version\": \"5.43\", \"activeSectionIndex\": 0}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "ReportSection0",
+      "displayName": "Vue générale",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 0,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 290,
+          "height": 110,
+          "config": "{\"name\": \"gcard0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 290, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Prix Moyen\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen\"}, \"Name\": \"flight_prices.Prix Moyen\", \"NativeReferenceName\": \"Prix Moyen\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 330,
+          "y": 20,
+          "z": 0,
+          "width": 290,
+          "height": 110,
+          "config": "{\"name\": \"gcard1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 330, \"y\": 20, \"z\": 0, \"width\": 290, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Durée Moyenne\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Durée Moyenne\"}, \"Name\": \"flight_prices.Durée Moyenne\", \"NativeReferenceName\": \"Durée Moyenne\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 640,
+          "y": 20,
+          "z": 0,
+          "width": 290,
+          "height": 110,
+          "config": "{\"name\": \"gcard2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 640, \"y\": 20, \"z\": 0, \"width\": 290, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Taux Vols Directs\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Taux Vols Directs\"}, \"Name\": \"flight_prices.Taux Vols Directs\", \"NativeReferenceName\": \"Taux Vols Directs\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 950,
+          "y": 20,
+          "z": 0,
+          "width": 290,
+          "height": 110,
+          "config": "{\"name\": \"gcard3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 950, \"y\": 20, \"z\": 0, \"width\": 290, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 150,
+          "z": 0,
+          "width": 610,
+          "height": 270,
+          "config": "{\"name\": \"g1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 150, \"z\": 0, \"width\": 610, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Airlines_info.Airline\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Prix Moyen\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"a\", \"Entity\": \"Airlines_info\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"a\"}}, \"Property\": \"Airline\"}, \"Name\": \"Airlines_info.Airline\", \"NativeReferenceName\": \"Airline\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen\"}, \"Name\": \"flight_prices.Prix Moyen\", \"NativeReferenceName\": \"Prix Moyen\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prix moyen par compagnie'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 150,
+          "z": 0,
+          "width": 610,
+          "height": 270,
+          "config": "{\"name\": \"g2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 150, \"z\": 0, \"width\": 610, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"flight_prices.class\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Prix Moyen\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"class\"}, \"Name\": \"flight_prices.class\", \"NativeReferenceName\": \"class\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen\"}, \"Name\": \"flight_prices.Prix Moyen\", \"NativeReferenceName\": \"Prix Moyen\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prix moyen par classe'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 440,
+          "z": 0,
+          "width": 610,
+          "height": 260,
+          "config": "{\"name\": \"g3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 440, \"z\": 0, \"width\": 610, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"donutChart\", \"projections\": {\"Category\": [{\"queryRef\": \"flight_prices.Prix_Categorie\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix_Categorie\"}, \"Name\": \"flight_prices.Prix_Categorie\", \"NativeReferenceName\": \"Prix_Categorie\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols par catégorie de prix'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 440,
+          "z": 0,
+          "width": 610,
+          "height": 260,
+          "config": "{\"name\": \"g4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 440, \"z\": 0, \"width\": 610, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Airlines_info.Airline\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Durée Moyenne\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"a\", \"Entity\": \"Airlines_info\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"a\"}}, \"Property\": \"Airline\"}, \"Name\": \"Airlines_info.Airline\", \"NativeReferenceName\": \"Airline\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Durée Moyenne\"}, \"Name\": \"flight_prices.Durée Moyenne\", \"NativeReferenceName\": \"Durée Moyenne\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Durée moyenne par compagnie'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "ReportSection1",
+      "displayName": "Vue temporelle",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 1,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 610,
+          "height": 330,
+          "config": "{\"name\": \"t1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 610, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"flight_prices.departure_time\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"departure_time\"}, \"Name\": \"flight_prices.departure_time\", \"NativeReferenceName\": \"departure_time\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols par heure de départ'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 20,
+          "z": 0,
+          "width": 610,
+          "height": 330,
+          "config": "{\"name\": \"t2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 650, \"y\": 20, \"z\": 0, \"width\": 610, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Date.Année_Mois\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Année_Mois\"}, \"Name\": \"Dim_Date.Année_Mois\", \"NativeReferenceName\": \"Année_Mois\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols par date d''arrivée (mois)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 370,
+          "z": 0,
+          "width": 920,
+          "height": 330,
+          "config": "{\"name\": \"t3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 370, \"z\": 0, \"width\": 920, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"flight_prices.departure_time\", \"active\": true}], \"Series\": [{\"queryRef\": \"flight_prices.class\"}], \"Y\": [{\"queryRef\": \"flight_prices.Prix Moyen\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"departure_time\"}, \"Name\": \"flight_prices.departure_time\", \"NativeReferenceName\": \"departure_time\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"class\"}, \"Name\": \"flight_prices.class\", \"NativeReferenceName\": \"class\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen\"}, \"Name\": \"flight_prices.Prix Moyen\", \"NativeReferenceName\": \"Prix Moyen\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prix moyen par heure de départ et classe'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 960,
+          "y": 370,
+          "z": 0,
+          "width": 300,
+          "height": 150,
+          "config": "{\"name\": \"t4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 370, \"z\": 0, \"width\": 300, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Corrélation Heure-Prix\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Corrélation Heure-Prix\"}, \"Name\": \"flight_prices.Corrélation Heure-Prix\", \"NativeReferenceName\": \"Corrélation Heure-Prix\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 960,
+          "y": 540,
+          "z": 0,
+          "width": 300,
+          "height": 150,
+          "config": "{\"name\": \"t5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 540, \"z\": 0, \"width\": 300, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Corrélation Durée-Prix\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Corrélation Durée-Prix\"}, \"Name\": \"flight_prices.Corrélation Durée-Prix\", \"NativeReferenceName\": \"Corrélation Durée-Prix\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "ReportSection2",
+      "displayName": "Vue géographique",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 2,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 760,
+          "height": 330,
+          "config": "{\"name\": \"geo1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 760, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"pivotTable\", \"projections\": {\"Rows\": [{\"queryRef\": \"flight_prices.source_city\", \"active\": true}], \"Columns\": [{\"queryRef\": \"flight_prices.destination_city\"}], \"Values\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"source_city\"}, \"Name\": \"flight_prices.source_city\", \"NativeReferenceName\": \"source_city\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"destination_city\"}, \"Name\": \"flight_prices.destination_city\", \"NativeReferenceName\": \"destination_city\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols : ville de départ → ville d''arrivée'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 800,
+          "y": 20,
+          "z": 0,
+          "width": 460,
+          "height": 680,
+          "config": "{\"name\": \"geo2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 800, \"y\": 20, \"z\": 0, \"width\": 460, \"height\": 680}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"flight_prices.Trajet\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Nombre de Vols\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Trajet\"}, \"Name\": \"flight_prices.Trajet\", \"NativeReferenceName\": \"Trajet\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols\"}, \"Name\": \"flight_prices.Nombre de Vols\", \"NativeReferenceName\": \"Nombre de Vols\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols par trajet'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 370,
+          "z": 0,
+          "width": 760,
+          "height": 330,
+          "config": "{\"name\": \"geo3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 370, \"z\": 0, \"width\": 760, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.source_city\"}, {\"queryRef\": \"flight_prices.Durée Moyenne\"}, {\"queryRef\": \"flight_prices.Escales Moyennes\"}, {\"queryRef\": \"flight_prices.Prix Moyen\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"source_city\"}, \"Name\": \"flight_prices.source_city\", \"NativeReferenceName\": \"source_city\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Durée Moyenne\"}, \"Name\": \"flight_prices.Durée Moyenne\", \"NativeReferenceName\": \"Durée Moyenne\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Escales Moyennes\"}, \"Name\": \"flight_prices.Escales Moyennes\", \"NativeReferenceName\": \"Escales Moyennes\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen\"}, \"Name\": \"flight_prices.Prix Moyen\", \"NativeReferenceName\": \"Prix Moyen\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Durée et escales par ville de départ'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "ReportSection3",
+      "displayName": "Vue analytique",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "ordinal": 3,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 760,
+          "height": 300,
+          "config": "{\"name\": \"an1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 760, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"Airlines_info.Airline\"}, {\"queryRef\": \"flight_prices.Prix Moyen Economy\"}, {\"queryRef\": \"flight_prices.Durée Moyenne Economy\"}, {\"queryRef\": \"flight_prices.Taux Vols Directs Economy\"}, {\"queryRef\": \"flight_prices.Nombre de Vols Economy\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"a\", \"Entity\": \"Airlines_info\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"a\"}}, \"Property\": \"Airline\"}, \"Name\": \"Airlines_info.Airline\", \"NativeReferenceName\": \"Airline\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen Economy\"}, \"Name\": \"flight_prices.Prix Moyen Economy\", \"NativeReferenceName\": \"Prix Moyen Economy\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Durée Moyenne Economy\"}, \"Name\": \"flight_prices.Durée Moyenne Economy\", \"NativeReferenceName\": \"Durée Moyenne Economy\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Taux Vols Directs Economy\"}, \"Name\": \"flight_prices.Taux Vols Directs Economy\", \"NativeReferenceName\": \"Taux Vols Directs Economy\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nombre de Vols Economy\"}, \"Name\": \"flight_prices.Nombre de Vols Economy\", \"NativeReferenceName\": \"Nombre de Vols Economy\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Compagnies sur le segment Economy'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 800,
+          "y": 20,
+          "z": 0,
+          "width": 460,
+          "height": 300,
+          "config": "{\"name\": \"an2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 800, \"y\": 20, \"z\": 0, \"width\": 460, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Airlines_info.Airline\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Prix Moyen Economy\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"a\", \"Entity\": \"Airlines_info\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"a\"}}, \"Property\": \"Airline\"}, \"Name\": \"Airlines_info.Airline\", \"NativeReferenceName\": \"Airline\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Prix Moyen Economy\"}, \"Name\": \"flight_prices.Prix Moyen Economy\", \"NativeReferenceName\": \"Prix Moyen Economy\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prix moyen Economy'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 340,
+          "z": 0,
+          "width": 300,
+          "height": 150,
+          "config": "{\"name\": \"an3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 340, \"z\": 0, \"width\": 300, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.Nb Anomalies\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nb Anomalies\"}, \"Name\": \"flight_prices.Nb Anomalies\", \"NativeReferenceName\": \"Nb Anomalies\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        },
+        {
+          "x": 340,
+          "y": 340,
+          "z": 0,
+          "width": 920,
+          "height": 360,
+          "config": "{\"name\": \"an4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 340, \"y\": 340, \"z\": 0, \"width\": 920, \"height\": 360}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Airlines_info.Airline\", \"active\": true}], \"Y\": [{\"queryRef\": \"flight_prices.Nb Anomalies\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"a\", \"Entity\": \"Airlines_info\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"a\"}}, \"Property\": \"Airline\"}, \"Name\": \"Airlines_info.Airline\", \"NativeReferenceName\": \"Airline\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Nb Anomalies\"}, \"Name\": \"flight_prices.Nb Anomalies\", \"NativeReferenceName\": \"Nb Anomalies\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Vols au prix anormal par compagnie'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 510,
+          "z": 0,
+          "width": 300,
+          "height": 190,
+          "config": "{\"name\": \"an5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 510, \"z\": 0, \"width\": 300, \"height\": 190}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"flight_prices.class\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"flight_prices\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"class\"}, \"Name\": \"flight_prices.class\", \"NativeReferenceName\": \"class\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]"
+        }
+      ]
+    }
+  ]
+}

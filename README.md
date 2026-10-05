@@ -13,9 +13,29 @@ Solution du TP3 du cours *Data Analysis – Data Driven Decision Making*.
 | `data/clean/` | Données déjà nettoyées (CSV UTF-8) : `flight_prices.csv`, `Airlines_info.csv`, `Weather_conditions.csv` |
 | `powerquery/` | Code M (Power Query) de chaque requête, à coller dans l'Éditeur avancé |
 | `dax/` | Colonne calculée, tables calculées (Dim_Date, paramètre de champs) et mesures DAX |
+| `TP3.pbip`, `TP3.SemanticModel/`, `TP3.Report/` | Projet Power BI prêt à ouvrir |
 | `scripts/preparation.py` | Même nettoyage en Python : régénère `data/clean/` et affiche les chiffres de contrôle |
 
-## Construire le fichier Power BI (pas à pas)
+## Ouvrir directement dans Power BI (projet `TP3.pbip`)
+
+Le dépôt contient un **projet Power BI** prêt à ouvrir : `TP3.pbip` (modèle avec les 4 tables, les relations, la colonne `Variation_Prix`, toutes les mesures, et 4 pages de rapport : Vue générale, Vue temporelle, Vue géographique, Vue analytique).
+
+Dans PowerShell :
+
+```powershell
+git clone https://github.com/mostafa-amine-zakani/Tp3.git C:\Tp3
+Start-Process C:\Tp3\TP3.pbip
+```
+
+Puis dans Power BI Desktop : **Accueil > Actualiser** (le projet ne stocke pas les données, il lit les CSV de `C:\Tp3\data\clean`).
+
+- Si le dépôt est cloné ailleurs que `C:\Tp3` : *Transformer les données > Modifier les paramètres* > `DossierTP3` = votre chemin, puis Actualiser.
+- Si Power BI refuse d'ouvrir le `.pbip` : *Fichier > Options et paramètres > Options > Fonctionnalités en préversion* > cocher **Enregistrement du projet Power BI (.pbip)**, redémarrer Power BI.
+- Pour obtenir un `.pbix` : *Fichier > Enregistrer sous* > type *Fichier Power BI (.pbix)*.
+- À ajouter à la main (non générables en fichier texte de façon fiable) : signets, info-bulles personnalisées, paramètre de champs `Indicateur`, couleur conditionnelle (§5.5 de `TP3_Explications.md`).
+- Le projet est généré par `scripts/generer_pbip.py`.
+
+## Construire le fichier Power BI à la main (pas à pas)
 
 1. **Récupérer le dépôt** : `git clone https://github.com/mostafa-amine-zakani/Tp3.git` (ou `git pull` si déjà cloné).
 2. Ouvrir **Power BI Desktop** > *Accueil > Transformer les données* (ouvre Power Query).
