@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json",
+  "name": "an1",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 1000,
+    "height": 300,
+    "width": 760,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Airlines_info"
+                    }
+                  },
+                  "Property": "Airline"
+                }
+              },
+              "queryRef": "Airlines_info.Airline",
+              "nativeQueryRef": "Airline"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flight_prices"
+                    }
+                  },
+                  "Property": "Prix Moyen Economy"
+                }
+              },
+              "queryRef": "flight_prices.Prix Moyen Economy",
+              "nativeQueryRef": "Prix Moyen Economy"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flight_prices"
+                    }
+                  },
+                  "Property": "Durée Moyenne Economy"
+                }
+              },
+              "queryRef": "flight_prices.Durée Moyenne Economy",
+              "nativeQueryRef": "Durée Moyenne Economy"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flight_prices"
+                    }
+                  },
+                  "Property": "Taux Vols Directs Economy"
+                }
+              },
+              "queryRef": "flight_prices.Taux Vols Directs Economy",
+              "nativeQueryRef": "Taux Vols Directs Economy"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flight_prices"
+                    }
+                  },
+                  "Property": "Nombre de Vols Economy"
+                }
+              },
+              "queryRef": "flight_prices.Nombre de Vols Economy",
+              "nativeQueryRef": "Nombre de Vols Economy"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Compagnies sur le segment Economy'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

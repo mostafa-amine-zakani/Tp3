@@ -1,5 +1,5 @@
 """
-Génère le projet Power BI TP3.pbip (modèle sémantique model.bim + rapport report.json).
+Génère le projet Power BI TP3.pbip (modèle sémantique model.bim + rapport au format PBIR).
 
 Le projet charge les CSV de data/clean depuis GitHub (paramètre DossierTP3 = URL du dépôt) ;
 on peut remplacer DossierTP3 par le chemin d'un clone local (ex. C:\\Tp3). Ouvrir TP3.pbip dans Power BI Desktop puis cliquer sur « Actualiser ».
@@ -219,44 +219,39 @@ model = {
 }
 
 # =====================================================================================
-# Rapport (format report.json)
+# Rapport (format PBIR : un dossier par page et un fichier visual.json par visuel)
 # =====================================================================================
-ALIAS = {"flight_prices": "f", "Airlines_info": "a", "Weather_conditions": "w", "Dim_Date": "d"}
+VISUAL_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json"
+
+
+def lit(value):
+    return {"expr": {"Literal": {"Value": value}}}
 
 
 def visual(vid, vtype, x, y, w, h, roles, title=None):
     """roles : {role: [(kind, table, field), ...]} avec kind = 'C' (colonne) ou 'M' (mesure)."""
-    tables, select, projections = [], [], {}
+    query = {}
     for role, fields in roles.items():
-        projections[role] = []
+        projections = []
         for kind, table, field in fields:
-            ref = f"{table}.{field}"
-            if table not in tables:
-                tables.append(table)
-            if not any(s["Name"] == ref for s in select):
-                key = "Column" if kind == "C" else "Measure"
-                select.append({key: {"Expression": {"SourceRef": {"Source": ALIAS[table]}}, "Property": field},
-                               "Name": ref, "NativeReferenceName": field})
-            p = {"queryRef": ref}
-            if role in ("Category", "Rows"):
+            key = "Column" if kind == "C" else "Measure"
+            p = {"field": {key: {"Expression": {"SourceRef": {"Entity": table}}, "Property": field}},
+                 "queryRef": f"{table}.{field}", "nativeQueryRef": field}
+            if role in ("Category", "Rows", "Values") and kind == "C" and vtype != "tableEx":
                 p["active"] = True
-            projections[role].append(p)
-    single = {
-        "visualType": vtype,
-        "projections": projections,
-        "prototypeQuery": {"Version": 2,
-                           "From": [{"Name": ALIAS[t], "Entity": t, "Type": 0} for t in tables],
-                           "Select": select},
-        "drillFilterOtherVisuals": True,
-    }
+            projections.append(p)
+        query[role] = {"projections": projections}
+    container = {"background": [{"properties": {"show": lit("false")}}]}
     if title:
-        single["vcObjects"] = {"title": [{"properties": {
-            "show": {"expr": {"Literal": {"Value": "true"}}},
-            "text": {"expr": {"Literal": {"Value": "'" + title.replace("'", "''") + "'"}}}}}]}
-    cfg = {"name": vid, "layouts": [{"id": 0, "position": {"x": x, "y": y, "z": 0, "width": w, "height": h}}],
-           "singleVisual": single}
-    return {"x": x, "y": y, "z": 0, "width": w, "height": h, "config": json.dumps(cfg, ensure_ascii=False),
-            "filters": "[]"}
+        container["title"] = [{"properties": {"show": lit("true"),
+                                              "text": lit("'" + title.replace("'", "''") + "'")}}]
+    return {
+        "$schema": VISUAL_SCHEMA,
+        "name": vid,
+        "position": {"x": x, "y": y, "z": 1000, "height": h, "width": w, "tabOrder": 1000},
+        "visual": {"visualType": vtype, "query": {"queryState": query},
+                   "visualContainerObjects": container, "drillFilterOtherVisuals": True},
+    }
 
 
 F, A, D = "flight_prices", "Airlines_info", "Dim_Date"
@@ -309,16 +304,6 @@ pages = [
     ]),
 ]
 
-report = {
-    "config": json.dumps({"version": "5.43", "activeSectionIndex": 0}),
-    "layoutOptimization": 0,
-    "sections": [
-        {"name": f"ReportSection{i}", "displayName": name, "displayOption": 1, "width": 1280, "height": 720,
-         "ordinal": i, "config": "{}", "filters": "[]", "visualContainers": vcs}
-        for i, (name, vcs) in enumerate(pages)
-    ],
-}
-
 # =====================================================================================
 # Fichiers du projet
 # =====================================================================================
@@ -328,13 +313,44 @@ platform = lambda typ: {
     "config": {"version": "2.0", "logicalId": gid("logical" + typ)},
 }
 
-write(ROOT / "TP3.pbip", {"version": "1.0", "artifacts": [{"report": {"path": "TP3.Report"}}],
+write(ROOT / "TP3.pbip", {"$schema": "https://developer.microsoft.com/json-schemas/fabric/pbip/pbipProperties/1.0.0/schema.json",
+                          "version": "1.0", "artifacts": [{"report": {"path": "TP3.Report"}}],
                           "settings": {"enableAutoRecovery": True}})
-write(ROOT / "TP3.SemanticModel" / "definition.pbism", {"version": "1.0", "settings": {}})
+write(ROOT / "TP3.SemanticModel" / "definition.pbism", {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json",
+    "version": "1.0", "settings": {}})
 write(ROOT / "TP3.SemanticModel" / "model.bim", model)
 write(ROOT / "TP3.SemanticModel" / ".platform", platform("SemanticModel"))
-write(ROOT / "TP3.Report" / "definition.pbir",
-      {"version": "1.0", "datasetReference": {"byPath": {"path": "../TP3.SemanticModel"}, "byConnection": None}})
-write(ROOT / "TP3.Report" / "report.json", report)
+import shutil
+shutil.rmtree(ROOT / "TP3.Report", ignore_errors=True)
+REP = ROOT / "TP3.Report"
+write(REP / "definition.pbir", {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+    "version": "4.0", "datasetReference": {"byPath": {"path": "../TP3.SemanticModel"}}})
+write(REP / "definition" / "version.json", {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/versionMetadata/1.0.0/schema.json",
+    "version": "2.0.0"})
+write(REP / "definition" / "report.json", {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+    "themeCollection": {"baseTheme": {"name": "CY24SU10", "reportVersionAtImport": "5.59", "type": "SharedResources"}},
+    "layoutOptimization": "None",
+    "resourcePackages": [{"name": "SharedResources", "type": "SharedResources",
+                          "items": [{"name": "CY24SU10", "path": "BaseThemes/CY24SU10.json", "type": "BaseTheme"}]}],
+    "settings": {"useStylableVisualContainerHeader": True, "defaultDrillFilterOtherVisuals": True,
+                 "allowChangeFilterTypes": True, "useDefaultAggregateDisplayName": True},
+})
+shutil.copy(Path(__file__).parent / "ressources" / "CY24SU10.json",
+            (REP / "StaticResources" / "SharedResources" / "BaseThemes").mkdir(parents=True, exist_ok=True)
+            or REP / "StaticResources" / "SharedResources" / "BaseThemes" / "CY24SU10.json")
+page_ids = [f"page{i}" for i in range(len(pages))]
+write(REP / "definition" / "pages" / "pages.json", {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+    "pageOrder": page_ids, "activePageName": page_ids[0]})
+for pid, (name, visuals) in zip(page_ids, pages):
+    write(REP / "definition" / "pages" / pid / "page.json", {
+        "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.2.0/schema.json",
+        "name": pid, "displayName": name, "displayOption": "FitToPage", "height": 720, "width": 1280})
+    for v in visuals:
+        write(REP / "definition" / "pages" / pid / "visuals" / v["name"] / "visual.json", v)
 write(ROOT / "TP3.Report" / ".platform", platform("Report"))
 print("Projet généré : TP3.pbip")
