@@ -175,7 +175,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\flight_prices.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Source = Csv.Document(if Text.StartsWith(DossierTP3, \"http\") then Web.Contents(DossierTP3 & \"/data/clean/flight_prices.csv\") else File.Contents(DossierTP3 & \"\\data\\clean\\flight_prices.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
                 "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
                 "    Types = Table.TransformColumnTypes(EnTetes, {",
                 "        {\"flight_id\", Int64.Type}, {\"OP_CARRIER\", type text}, {\"flight\", type text},",
@@ -329,7 +329,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\Airlines_info.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Source = Csv.Document(if Text.StartsWith(DossierTP3, \"http\") then Web.Contents(DossierTP3 & \"/data/clean/Airlines_info.csv\") else File.Contents(DossierTP3 & \"\\data\\clean\\Airlines_info.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
                 "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
                 "    Types = Table.TransformColumnTypes(EnTetes, {{\"IATA_CODE\", type text}, {\"Airline\", type text}, {\"Headquarters_Location\", type text}, {\"Country\", type text}})",
                 "in",
@@ -367,7 +367,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(DossierTP3 & \"\\data\\clean\\Weather_conditions.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Source = Csv.Document(if Text.StartsWith(DossierTP3, \"http\") then Web.Contents(DossierTP3 & \"/data/clean/Weather_conditions.csv\") else File.Contents(DossierTP3 & \"\\data\\clean\\Weather_conditions.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
                 "    EnTetes = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
                 "    Types = Table.TransformColumnTypes(EnTetes, {{\"Weather_ID\", Int64.Type}, {\"Weather_condition\", type text}})",
                 "in",
@@ -484,7 +484,7 @@
         "name": "DossierTP3",
         "kind": "m",
         "lineageTag": "7da7bdd3-6618-5804-9976-3eb63d4d907b",
-        "expression": "\"C:\\Tp3\" meta [IsParameterQuery = true, Type = \"Text\", IsParameterQueryRequired = true]",
+        "expression": "\"https://raw.githubusercontent.com/mostafa-amine-zakani/Tp3/claude/project-thread-tws6zc\" meta [IsParameterQuery = true, Type = \"Text\", IsParameterQueryRequired = true]",
         "annotations": [
           {
             "name": "PBI_ResultType",

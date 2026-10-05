@@ -1,8 +1,8 @@
 """
 Génère le projet Power BI TP3.pbip (modèle sémantique model.bim + rapport report.json).
 
-Le projet charge les CSV de data/clean depuis le dossier indiqué par le paramètre DossierTP3
-(par défaut C:\\Tp3). Ouvrir TP3.pbip dans Power BI Desktop puis cliquer sur « Actualiser ».
+Le projet charge les CSV de data/clean depuis GitHub (paramètre DossierTP3 = URL du dépôt) ;
+on peut remplacer DossierTP3 par le chemin d'un clone local (ex. C:\\Tp3). Ouvrir TP3.pbip dans Power BI Desktop puis cliquer sur « Actualiser ».
 
 Usage : python scripts/generer_pbip.py   (depuis la racine du dépôt)
 """
@@ -48,7 +48,11 @@ def measure(table, name, expr, fmt):
     return ms
 
 
-CSV = 'Csv.Document(File.Contents(DossierTP3 & "\\data\\clean\\{f}"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv])'
+# DossierTP3 = URL GitHub (par défaut, aucun chemin local à régler) ou chemin d'un dossier local cloné
+CSV = ('Csv.Document(if Text.StartsWith(DossierTP3, "http") '
+       'then Web.Contents(DossierTP3 & "/data/clean/{f}") '
+       'else File.Contents(DossierTP3 & "\\data\\clean\\{f}"), '
+       '[Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv])')
 
 flight_prices = {
     "name": "flight_prices",
@@ -203,7 +207,7 @@ model = {
         ],
         "expressions": [{
             "name": "DossierTP3", "kind": "m", "lineageTag": gid("DossierTP3"),
-            "expression": '"C:\\Tp3" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]',
+            "expression": '"https://raw.githubusercontent.com/mostafa-amine-zakani/Tp3/claude/project-thread-tws6zc" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]',
             "annotations": [{"name": "PBI_ResultType", "value": "Text"}],
         }],
         "annotations": [

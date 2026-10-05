@@ -20,16 +20,16 @@ Solution du TP3 du cours *Data Analysis – Data Driven Decision Making*.
 
 Le dépôt contient un **projet Power BI** prêt à ouvrir : `TP3.pbip` (modèle avec les 4 tables, les relations, la colonne `Variation_Prix`, toutes les mesures, et 4 pages de rapport : Vue générale, Vue temporelle, Vue géographique, Vue analytique).
 
-Dans PowerShell :
+Dans PowerShell (n'importe quel dossier) :
 
 ```powershell
-git clone https://github.com/mostafa-amine-zakani/Tp3.git C:\Tp3
-Start-Process C:\Tp3\TP3.pbip
+git clone https://github.com/mostafa-amine-zakani/Tp3.git
+Start-Process .\Tp3\TP3.pbip
 ```
 
-Puis dans Power BI Desktop : **Accueil > Actualiser** (le projet ne stocke pas les données, il lit les CSV de `C:\Tp3\data\clean`).
+Puis dans Power BI Desktop : **Accueil > Actualiser** (ou **Appliquer les modifications** si un bandeau jaune le propose). Le projet ne stocke pas les données : il télécharge les CSV de `data/clean` depuis GitHub (connexion Internet nécessaire). Si Power BI demande comment se connecter au site web, choisir **Anonyme > Se connecter**.
 
-- Si le dépôt est cloné ailleurs que `C:\Tp3` : *Transformer les données > Modifier les paramètres* > `DossierTP3` = votre chemin, puis Actualiser.
+- Pour travailler hors ligne : *Transformer les données > Modifier les paramètres* > `DossierTP3` = chemin de votre clone (ex. `C:\Tp3`), puis Actualiser.
 - Si Power BI refuse d'ouvrir le `.pbip` : *Fichier > Options et paramètres > Options > Fonctionnalités en préversion* > cocher **Enregistrement du projet Power BI (.pbip)**, redémarrer Power BI.
 - Pour obtenir un `.pbix` : *Fichier > Enregistrer sous* > type *Fichier Power BI (.pbix)*.
 - À ajouter à la main (non générables en fichier texte de façon fiable) : signets, info-bulles personnalisées, paramètre de champs `Indicateur`, couleur conditionnelle (§5.5 de `TP3_Explications.md`).
