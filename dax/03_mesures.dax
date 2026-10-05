@@ -1,0 +1,66 @@
+// =====================================================================
+// Étape 4 : mesures DAX (créées dans la table flight_prices : Accueil > Nouvelle mesure)
+// =====================================================================
+
+// ---------- Mesures demandées par l'énoncé
+Prix Moyen = AVERAGE ( flight_prices[price] )
+
+Durée Moyenne = AVERAGE ( flight_prices[duration] )
+
+// L'énoncé écrit CALCULATE(AVERAGE(flight_prices[price]), flight_prices[class]) :
+// un nom de colonne seul n'est pas un filtre valide pour CALCULATE.
+// Intention : prix moyen de la classe du contexte, en ignorant les autres filtres.
+Prix Moyen par Classe =
+CALCULATE ( [Prix Moyen], ALLEXCEPT ( flight_prices, flight_prices[class] ) )
+
+Écart Prix = [Prix Moyen] - CALCULATE ( [Prix Moyen], ALL ( flight_prices ) )
+
+Taux Vols Directs =
+DIVIDE (
+    COUNTROWS ( FILTER ( flight_prices, flight_prices[stops] = 0 ) ),
+    COUNTROWS ( flight_prices )
+)
+// Format : Pourcentage
+
+// La colonne days_left N'EXISTE PAS dans le fichier fourni (Airlines_flights_data.xlsx).
+// Si elle est ajoutée un jour, la mesure de l'énoncé s'écrirait :
+// Prix Moyen par Jours Restants =
+//     CALCULATE ( [Prix Moyen], ALLEXCEPT ( flight_prices, flight_prices[days_left] ) )
+
+
+// ---------- Mesures complémentaires (KPI, tooltips, field parameter, mise en forme)
+Nombre de Vols = COUNTROWS ( flight_prices )
+
+Escales Moyennes = AVERAGE ( flight_prices[stops] )
+
+Durée Moyenne (min) = AVERAGE ( flight_prices[Duree_Minutes] )
+
+Nb Anomalies = CALCULATE ( COUNTROWS ( flight_prices ), flight_prices[Est_Anomalie] = "Oui" )
+
+// Couleur pour la mise en forme conditionnelle (Couleur de la barre > fx > Valeur du champ)
+Couleur Prix =
+SWITCH (
+    TRUE (),
+    [Prix Moyen] < 10000, "#2E7D32",   // Bas    -> vert
+    [Prix Moyen] < 20000, "#F9A825",   // Moyen  -> orange
+    "#C62828"                          // Élevé  -> rouge
+)
+
+// Corrélation de Pearson entre le créneau de départ (1 = tôt le matin ... 6 = tard la nuit) et le prix
+// r = cov(x, y) / (σx · σy)  ; proche de 0 => pas de lien linéaire
+Corrélation Heure-Prix =
+VAR mx = AVERAGE ( flight_prices[Ordre_Depart] )
+VAR my = AVERAGE ( flight_prices[price] )
+VAR cov = SUMX ( flight_prices, ( flight_prices[Ordre_Depart] - mx ) * ( flight_prices[price] - my ) )
+VAR sx = SQRT ( SUMX ( flight_prices, ( flight_prices[Ordre_Depart] - mx ) ^ 2 ) )
+VAR sy = SQRT ( SUMX ( flight_prices, ( flight_prices[price] - my ) ^ 2 ) )
+RETURN DIVIDE ( cov, sx * sy )
+
+// Même principe entre la durée et le prix
+Corrélation Durée-Prix =
+VAR mx = AVERAGE ( flight_prices[duration] )
+VAR my = AVERAGE ( flight_prices[price] )
+VAR cov = SUMX ( flight_prices, ( flight_prices[duration] - mx ) * ( flight_prices[price] - my ) )
+VAR sx = SQRT ( SUMX ( flight_prices, ( flight_prices[duration] - mx ) ^ 2 ) )
+VAR sy = SQRT ( SUMX ( flight_prices, ( flight_prices[price] - my ) ^ 2 ) )
+RETURN DIVIDE ( cov, sx * sy )

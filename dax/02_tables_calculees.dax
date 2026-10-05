@@ -1,0 +1,30 @@
+// =====================================================================
+// Dimension Temps (axe d'analyse "Temps" du modèle en étoile)
+// Modélisation > Nouvelle table
+// Puis : Outils de table > Marquer comme table de dates > colonne Date
+// =====================================================================
+Dim_Date =
+ADDCOLUMNS (
+    CALENDAR ( MIN ( flight_prices[Arrival_date] ), MAX ( flight_prices[Arrival_date] ) ),
+    "Année", YEAR ( [Date] ),
+    "Trimestre", "T" & QUARTER ( [Date] ),
+    "Mois_Num", MONTH ( [Date] ),
+    "Mois", FORMAT ( [Date], "mmm" ),
+    "Année_Mois", FORMAT ( [Date], "yyyy-mm" ),
+    "Jour_Semaine", FORMAT ( [Date], "dddd" )
+)
+// Trier la colonne Mois par Mois_Num (Outils de colonne > Trier par colonne)
+
+
+// =====================================================================
+// Paramètre de champs (Field Parameter) : bascule Prix / Durée / Escales
+// À créer de préférence par l'interface :
+//   Modélisation > Nouveau paramètre > Champs > ajouter [Prix Moyen], [Durée Moyenne], [Escales Moyennes]
+//   nom : Indicateur  (cocher "Ajouter un segment à cette page")
+// Power BI génère alors exactement ce code :
+// =====================================================================
+Indicateur = {
+    ( "Prix moyen", NAMEOF ( 'flight_prices'[Prix Moyen] ), 0 ),
+    ( "Durée moyenne", NAMEOF ( 'flight_prices'[Durée Moyenne] ), 1 ),
+    ( "Escales moyennes", NAMEOF ( 'flight_prices'[Escales Moyennes] ), 2 )
+}

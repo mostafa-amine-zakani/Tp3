@@ -1,0 +1,12 @@
+// =====================================================================
+// Étape 2.4 : colonne calculée DAX (table flight_prices)
+// Outils de table > Nouvelle colonne
+// Variation relative du prix d'un vol par rapport au prix moyen de TOUS les vols :
+//   Variation_Prix_i = p_i / p̄ - 1
+// =====================================================================
+Variation_Prix =
+DIVIDE (
+    flight_prices[price],
+    CALCULATE ( AVERAGE ( flight_prices[price] ), ALL ( flight_prices ) )
+) - 1
+// Format conseillé : Pourcentage. Ex. : 5 953 / 20 890 - 1 = -71,5 %
